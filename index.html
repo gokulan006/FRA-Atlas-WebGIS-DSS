@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRA Atlas & WebGIS-DSS</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">FRA Atlas & WebGIS-DSS</h1>
+            <nav class="header-nav">
+                <button class="nav-tab active" data-tab="map">Map View</button>
+                <button class="nav-tab" data-tab="digitization">Document Digitization</button>
+                <button class="nav-tab" data-tab="analytics">Analytics</button>
+                <button class="nav-tab" data-tab="reports">Reports</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Filters & Controls</h3>
+                
+                <!-- Location Filters -->
+                <div class="form-group">
+                    <label class="form-label">State</label>
+                    <select id="stateFilter" class="form-control">
+                        <option value="">All States</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">District</label>
+                    <select id="districtFilter" class="form-control">
+                        <option value="">All Districts</option>
+                    </select>
+                </div>
+
+                <!-- FRA Claims Filters -->
+                <div class="form-group">
+                    <label class="form-label">Claim Type</label>
+                    <select id="claimTypeFilter" class="form-control">
+                        <option value="">All Types</option>
+                        <option value="IFR">Individual Forest Rights (IFR)</option>
+                        <option value="CR">Community Rights (CR)</option>
+                        <option value="CFR">Community Forest Resource (CFR)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select id="statusFilter" class="form-control">
+                        <option value="">All Status</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <!-- Search -->
+                <div class="form-group">
+                    <label class="form-label">Search</label>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name or ID...">
+                </div>
+
+                <button id="applyFilters" class="btn btn--primary btn--full-width">Apply Filters</button>
+            </div>
+
+            <!-- Map Layers Control -->
+            <div class="sidebar-section">
+                <h3>Map Layers</h3>
+                <div class="layer-controls">
+                    <label class="layer-control">
+                        <input type="checkbox" id="fraClaimsLayer" checked>
+                        <span>FRA Claims</span>
+                    </label>
+                    <label class="layer-control">
+                        <input type="checkbox" id="waterBodiesLayer">
+                        <span>💧 Water Bodies</span>
+                    </label>
+                    <label class="layer-control">
+                        <input type="checkbox" id="agricultureLayer">
+                        <span>🌾 Agricultural Land</span>
+                    </label>
+                    <label class="layer-control">
+                        <input type="checkbox" id="forestLayer">
+                        <span>🌳 Forest Cover</span>
+                    </label>
+                    <label class="layer-control">
+                        <input type="checkbox" id="homesteadLayer">
+                        <span>🏠 Homesteads</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="sidebar-section">
+                <h3>Summary Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalClaims">0</div>
+                        <div class="stat-label">Total Claims</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="approvedClaims">0</div>
+                        <div class="stat-label">Approved</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="pendingClaims">0</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Map Tab -->
+            <div id="mapTab" class="tab-content active">
+                <div id="map" class="map-container"></div>
+            </div>
+
+            <!-- Document Digitization Tab -->
+            <div id="digitizationTab" class="tab-content">
+                <div class="digitization-panel">
+                    <h2>Document Digitization Module</h2>
+                    <div class="upload-section">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📄</div>
+                            <h3>Upload FRA Documents</h3>
+                            <p>Drag and drop documents here or click to browse</p>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png">
+                            <button class="btn btn--primary" onclick="document.getElementById('fileInput').click()">
+                                Choose Files
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="processingResults" class="processing-results hidden">
+                        <h3>OCR Processing Results</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="extracted-data">
+                            <h4>Extracted Information:</h4>
+                            <div id="extractedInfo" class="extracted-info"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="analyticsTab" class="tab-content">
+                <div class="analytics-panel">
+                    <h2>Analytics Dashboard</h2>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Claims by State</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="stateChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Claims by Type</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="typeChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Status Distribution</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="statusChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Monthly Progress</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="progressChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reportsTab" class="tab-content">
+                <div class="reports-panel">
+                    <h2>Reports & Recommendations</h2>
+                    <div class="report-actions">
+                        <button class="btn btn--primary" onclick="generateReport()">Generate Report</button>
+                        <button class="btn btn--outline" onclick="exportData()">Export Data</button>
+                    </div>
+                    <div id="reportContent" class="report-content">
+                        <p>Select filters and generate reports to view detailed analysis and recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <div class="panel-section">
+                <h3>Decision Support System</h3>
+                <div id="dssContent">
+                    <p>Select a location or FRA claim to view scheme recommendations.</p>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>Claim Details</h3>
+                <div id="claimDetails">
+                    <p>Click on a claim marker to view detailed information.</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Claim Details Modal -->
+    <div id="claimModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Claim Details</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--outline" onclick="closeModal()">Close</button>
+                <button class="btn btn--primary" onclick="generateSchemeRecommendations()">View Recommendations</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let map;
+        let fraClaimsLayerGroup;
+        let assetLayerGroups = {};
+        let allData = {};
+        let filteredClaims = [];
+        let currentSelectedClaim = null;
+        let charts = {};
+
+        // Initialize the application when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeData();
+            initializeMap();
+            initializeEventListeners();
+            initializeFilters();
+            updateStatistics();
+            initializeAnalytics();
+        });
+
+        // Application data
+        function initializeData() {
+            allData = {
+                states: [
+                    {
+                        name: "Madhya Pradesh",
+                        districts: [
+                            {"name": "Mandla", "lat": 22.5987, "lng": 80.3737},
+                            {"name": "Balaghat", "lat": 21.8081, "lng": 80.1896},
+                            {"name": "Dindori", "lat": 22.9442, "lng": 81.0828}
+                        ]
+                    },
+                    {
+                        name: "Odisha", 
+                        districts: [
+                            {"name": "Mayurbhanj", "lat": 21.9288, "lng": 86.7375},
+                            {"name": "Sundargarh", "lat": 22.1238, "lng": 84.0209},
+                            {"name": "Keonjhar", "lat": 21.6297, "lng": 85.5815}
+                        ]
+                    },
+                    {
+                        name: "Telangana",
+                        districts: [
+                            {"name": "Adilabad", "lat": 19.6718, "lng": 78.5318},
+                            {"name": "Khammam", "lat": 17.2473, "lng": 80.1514},
+                            {"name": "Warangal", "lat": 17.9689, "lng": 79.5941}
+                        ]
+                    },
+                    {
+                        name: "Tripura",
+                        districts: [
+                            {"name": "Dhalai", "lat": 23.8572, "lng": 91.8615},
+                            {"name": "North Tripura", "lat": 24.1766, "lng": 92.1771},
+                            {"name": "South Tripura", "lat": 23.1609, "lng": 91.4308}
+                        ]
+                    }
+                ],
+                fraClaims: [
+                    {
+                        id: "FRA001MP",
+                        patternHolderName: "Ramesh Kumar Baiga",
+                        village: "Jhiriya",
+                        district: "Mandla",
+                        state: "Madhya Pradesh",
+                        claimType: "IFR",
+                        area: "2.5 hectares",
+                        status: "Approved",
+                        lat: 22.5987,
+                        lng: 80.3737,
+                        dateOfClaim: "2023-03-15",
+                        assets: ["Agricultural Land", "Water Body"]
+                    },
+                    {
+                        id: "FRA002OD",
+                        patternHolderName: "Sunita Munda",
+                        village: "Badampahar",
+                        district: "Mayurbhanj", 
+                        state: "Odisha",
+                        claimType: "CR",
+                        area: "15.2 hectares",
+                        status: "Pending",
+                        lat: 21.9288,
+                        lng: 86.7375,
+                        dateOfClaim: "2023-08-20",
+                        assets: ["Forest Cover", "Medicinal Plants"]
+                    },
+                    {
+                        id: "FRA003TL",
+                        patternHolderName: "Arjun Gond",
+                        village: "Utnoor",
+                        district: "Adilabad",
+                        state: "Telangana", 
+                        claimType: "CFR",
+                        area: "45.8 hectares",
+                        status: "Approved",
+                        lat: 19.6718,
+                        lng: 78.5318,
+                        dateOfClaim: "2023-01-10",
+                        assets: ["Forest Cover", "Water Body", "Sacred Grove"]
+                    },
+                    {
+                        id: "FRA004TR",
+                        patternHolderName: "Maya Tripura",
+                        village: "Gandacherra",
+                        district: "Dhalai",
+                        state: "Tripura",
+                        claimType: "IFR", 
+                        area: "1.8 hectares",
+                        status: "Rejected",
+                        lat: 23.8572,
+                        lng: 91.8615,
+                        dateOfClaim: "2023-06-05",
+                        assets: ["Agricultural Land"]
+                    },
+                    {
+                        id: "FRA005MP",
+                        patternHolderName: "Devendra Korku",
+                        village: "Shahpura",
+                        district: "Balaghat",
+                        state: "Madhya Pradesh",
+                        claimType: "IFR",
+                        area: "3.2 hectares", 
+                        status: "Approved",
+                        lat: 21.8081,
+                        lng: 80.1896,
+                        dateOfClaim: "2023-04-12",
+                        assets: ["Agricultural Land", "Homestead"]
+                    }
+                ],
+                governmentSchemes: [
+                    {
+                        name: "PM-KISAN",
+                        description: "Income support to farmers",
+                        eligibility: "Agricultural land holders",
+                        benefit: "₹6,000 per year"
+                    },
+                    {
+                        name: "Jal Jeevan Mission", 
+                        description: "Piped water supply to rural households",
+                        eligibility: "Villages with water scarcity",
+                        benefit: "Piped water connection"
+                    },
+                    {
+                        name: "MGNREGA",
+                        description: "Rural employment guarantee",
+                        eligibility: "Rural households", 
+                        benefit: "100 days employment"
+                    },
+                    {
+                        name: "DAJGUA",
+                        description: "Tribal village development",
+                        eligibility: "Tribal communities",
+                        benefit: "Infrastructure and livelihood support"
+                    }
+                ],
+                assetTypes: [
+                    {
+                        name: "Water Bodies",
+                        color: "#1E90FF",
+                        icon: "💧"
+                    },
+                    {
+                        name: "Agricultural Land", 
+                        color: "#32CD32",
+                        icon: "🌾"
+                    },
+                    {
+                        name: "Forest Cover",
+                        color: "#228B22", 
+                        icon: "🌳"
+                    },
+                    {
+                        name: "Homesteads",
+                        color: "#8B4513",
+                        icon: "🏠"
+                    }
+                ]
+            };
+            
+            filteredClaims = [...allData.fraClaims];
+        }
+
+        // Initialize the map
+        function initializeMap() {
+            // Create map centered on India
+            map = L.map('map').setView([20.5937, 78.9629], 5);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Initialize layer groups
+            fraClaimsLayerGroup = L.layerGroup().addTo(map);
+            
+            assetLayerGroups = {
+                waterBodies: L.layerGroup(),
+                agriculture: L.layerGroup(),
+                forest: L.layerGroup(),
+                homestead: L.layerGroup()
+            };
+            
+            // Load FRA claims markers
+            loadFRAClaimsToMap();
+            
+            // Load asset layers (initially hidden)
+            loadAssetLayers();
+        }
+
+        // Load FRA claims as markers on the map
+        function loadFRAClaimsToMap() {
+            fraClaimsLayerGroup.clearLayers();
+            
+            filteredClaims.forEach(claim => {
+                const color = getClaimColor(claim.status);
+                const icon = getClaimIcon(claim.claimType, color);
+                
+                const marker = L.marker([claim.lat, claim.lng], {icon: icon})
+                    .bindPopup(createPopupContent(claim))
+                    .on('click', () => selectClaim(claim));
+                    
+                fraClaimsLayerGroup.addLayer(marker);
+            });
+        }
+
+        // Get color based on claim status
+        function getClaimColor(status) {
+            switch(status) {
+                case 'Approved': return '#32CD32';
+                case 'Pending': return '#FFA500';
+                case 'Rejected': return '#FF6B6B';
+                default: return '#808080';
+            }
+        }
+
+        // Create custom icons for claims
+        function getClaimIcon(claimType, color) {
+            const iconHtml = `
+                <div style="
+                    background-color: ${color};
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    border: 2px solid white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: bold;
+                    color: white;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                ">${claimType}</div>
+            `;
+            
+            return L.divIcon({
+                html: iconHtml,
+                className: 'custom-claim-marker',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+        }
+
+        // Create popup content for claims
+        function createPopupContent(claim) {
+            return `
+                <div class="popup-header">${claim.patternHolderName}</div>
+                <div class="popup-detail"><strong>ID:</strong> ${claim.id}</div>
+                <div class="popup-detail"><strong>Village:</strong> ${claim.village}</div>
+                <div class="popup-detail"><strong>District:</strong> ${claim.district}</div>
+                <div class="popup-detail"><strong>Type:</strong> ${claim.claimType}</div>
+                <div class="popup-detail"><strong>Area:</strong> ${claim.area}</div>
+                <div class="popup-detail"><strong>Status:</strong> <span class="status status--${claim.status.toLowerCase()}">${claim.status}</span></div>
+                <div class="popup-actions">
+                    <button class="popup-btn popup-btn--primary" onclick="viewClaimDetails('${claim.id}')">View Details</button>
+                    <button class="popup-btn popup-btn--secondary" onclick="generateSchemeRecommendations('${claim.id}')">Recommendations</button>
+                </div>
+            `;
+        }
+
+        // Load asset layers
+        function loadAssetLayers() {
+            // Sample asset data based on FRA claims
+            allData.fraClaims.forEach((claim, index) => {
+                claim.assets.forEach(assetType => {
+                    const layerName = getAssetLayerName(assetType);
+                    if (layerName && assetLayerGroups[layerName]) {
+                        const offset = (Math.random() - 0.5) * 0.01; // Small random offset
+                        const marker = L.circleMarker([claim.lat + offset, claim.lng + offset], {
+                            radius: 8,
+                            color: getAssetColor(assetType),
+                            fillColor: getAssetColor(assetType),
+                            fillOpacity: 0.7,
+                            weight: 2
+                        }).bindPopup(`
+                            <div><strong>${assetType}</strong></div>
+                            <div>Detected near ${claim.village}</div>
+                            <div>Confidence: ${(85 + Math.random() * 10).toFixed(1)}%</div>
+                        `);
+                        
+                        assetLayerGroups[layerName].addLayer(marker);
+                    }
+                });
+            });
+        }
+
+        // Get asset layer name
+        function getAssetLayerName(assetType) {
+            const mapping = {
+                'Water Body': 'waterBodies',
+                'Agricultural Land': 'agriculture',
+                'Forest Cover': 'forest',
+                'Homestead': 'homestead'
+            };
+            return mapping[assetType];
+        }
+
+        // Get asset color
+        function getAssetColor(assetType) {
+            const colors = {
+                'Water Body': '#1E90FF',
+                'Agricultural Land': '#32CD32',
+                'Forest Cover': '#228B22',
+                'Homestead': '#8B4513'
+            };
+            return colors[assetType] || '#808080';
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Tab navigation
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+            
+            // Layer controls
+            document.querySelectorAll('#fraClaimsLayer, #waterBodiesLayer, #agricultureLayer, #forestLayer, #homesteadLayer').forEach(checkbox => {
+                checkbox.addEventListener('change', toggleLayer);
+            });
+            
+            // Filters
+            document.getElementById('applyFilters').addEventListener('click', applyFilters);
+            document.getElementById('stateFilter').addEventListener('change', updateDistrictFilter);
+            document.getElementById('searchInput').addEventListener('input', debounce(applyFilters, 300));
+            
+            // File upload
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            
+            fileInput.addEventListener('change', handleFileUpload);
+            uploadArea.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('drop', handleFileDrop);
+        }
+
+        // Initialize filters
+        function initializeFilters() {
+            const stateFilter = document.getElementById('stateFilter');
+            
+            allData.states.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state.name;
+                option.textContent = state.name;
+                stateFilter.appendChild(option);
+            });
+        }
+
+        // Update district filter based on selected state
+        function updateDistrictFilter() {
+            const stateFilter = document.getElementById('stateFilter');
+            const districtFilter = document.getElementById('districtFilter');
+            
+            // Clear existing districts
+            districtFilter.innerHTML = '<option value="">All Districts</option>';
+            
+            if (stateFilter.value) {
+                const selectedState = allData.states.find(state => state.name === stateFilter.value);
+                if (selectedState) {
+                    selectedState.districts.forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district.name;
+                        option.textContent = district.name;
+                        districtFilter.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+            
+            // Handle tab-specific actions
+            if (tabName === 'map') {
+                setTimeout(() => map.invalidateSize(), 100);
+            } else if (tabName === 'analytics') {
+                updateCharts();
+            }
+        }
+
+        // Toggle map layers
+        function toggleLayer(event) {
+            const layerId = event.target.id;
+            const isChecked = event.target.checked;
+            
+            switch(layerId) {
+                case 'fraClaimsLayer':
+                    if (isChecked) {
+                        map.addLayer(fraClaimsLayerGroup);
+                    } else {
+                        map.removeLayer(fraClaimsLayerGroup);
+                    }
+                    break;
+                case 'waterBodiesLayer':
+                    if (isChecked) {
+                        map.addLayer(assetLayerGroups.waterBodies);
+                    } else {
+                        map.removeLayer(assetLayerGroups.waterBodies);
+                    }
+                    break;
+                case 'agricultureLayer':
+                    if (isChecked) {
+                        map.addLayer(assetLayerGroups.agriculture);
+                    } else {
+                        map.removeLayer(assetLayerGroups.agriculture);
+                    }
+                    break;
+                case 'forestLayer':
+                    if (isChecked) {
+                        map.addLayer(assetLayerGroups.forest);
+                    } else {
+                        map.removeLayer(assetLayerGroups.forest);
+                    }
+                    break;
+                case 'homesteadLayer':
+                    if (isChecked) {
+                        map.addLayer(assetLayerGroups.homestead);
+                    } else {
+                        map.removeLayer(assetLayerGroups.homestead);
+                    }
+                    break;
+            }
+        }
+
+        // Apply filters to FRA claims
+        function applyFilters() {
+            const stateFilter = document.getElementById('stateFilter').value;
+            const districtFilter = document.getElementById('districtFilter').value;
+            const claimTypeFilter = document.getElementById('claimTypeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            
+            filteredClaims = allData.fraClaims.filter(claim => {
+                return (!stateFilter || claim.state === stateFilter) &&
+                    (!districtFilter || claim.district === districtFilter) &&
+                    (!claimTypeFilter || claim.claimType === claimTypeFilter) &&
+                    (!statusFilter || claim.status === statusFilter) &&
+                    (!searchInput || 
+                        claim.patternHolderName.toLowerCase().includes(searchInput) ||
+                        claim.id.toLowerCase().includes(searchInput) ||
+                        claim.village.toLowerCase().includes(searchInput));
+            });
+            
+            loadFRAClaimsToMap();
+            updateStatistics();
+            showMessage('Filters applied successfully', 'success');
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            const total = filteredClaims.length;
+            const approved = filteredClaims.filter(claim => claim.status === 'Approved').length;
+            const pending = filteredClaims.filter(claim => claim.status === 'Pending').length;
+            
+            document.getElementById('totalClaims').textContent = total;
+            document.getElementById('approvedClaims').textContent = approved;
+            document.getElementById('pendingClaims').textContent = pending;
+        }
+
+        // Select a claim and show details
+        function selectClaim(claim) {
+            currentSelectedClaim = claim;
+            updateClaimDetails(claim);
+            generateDSSRecommendations(claim);
+        }
+
+        // View claim details in modal
+        function viewClaimDetails(claimId) {
+            const claim = allData.fraClaims.find(c => c.id === claimId);
+            if (!claim) return;
+            
+            currentSelectedClaim = claim;
+            
+            document.getElementById('modalTitle').textContent = `Claim Details - ${claim.id}`;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Claim ID:</span>
+                    <span class="claim-detail-value">${claim.id}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Patta Holder:</span>
+                    <span class="claim-detail-value">${claim.patternHolderName}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Village:</span>
+                    <span class="claim-detail-value">${claim.village}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">District:</span>
+                    <span class="claim-detail-value">${claim.district}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">State:</span>
+                    <span class="claim-detail-value">${claim.state}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Claim Type:</span>
+                    <span class="claim-detail-value">${claim.claimType}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Area:</span>
+                    <span class="claim-detail-value">${claim.area}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Status:</span>
+                    <span class="claim-detail-value status status--${claim.status.toLowerCase()}">${claim.status}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Date of Claim:</span>
+                    <span class="claim-detail-value">${new Date(claim.dateOfClaim).toLocaleDateString()}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Assets:</span>
+                    <span class="claim-detail-value">${claim.assets.join(', ')}</span>
+                </div>
+            `;
+            
+            document.getElementById('claimModal').classList.remove('hidden');
+        }
+
+        // Update claim details panel
+        function updateClaimDetails(claim) {
+            const claimDetailsPanel = document.getElementById('claimDetails');
+            claimDetailsPanel.innerHTML = `
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Claim ID:</span>
+                    <span class="claim-detail-value">${claim.id}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Patta Holder:</span>
+                    <span class="claim-detail-value">${claim.patternHolderName}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Village:</span>
+                    <span class="claim-detail-value">${claim.village}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Status:</span>
+                    <span class="claim-detail-value status status--${claim.status.toLowerCase()}">${claim.status}</span>
+                </div>
+                <div class="claim-detail-item">
+                    <span class="claim-detail-label">Area:</span>
+                    <span class="claim-detail-value">${claim.area}</span>
+                </div>
+            `;
+        }
+
+        // Generate DSS recommendations
+        function generateDSSRecommendations(claim) {
+            const dssContent = document.getElementById('dssContent');
+            const recommendations = getSchemeRecommendations(claim);
+            
+            let html = '<h4>Recommended Schemes:</h4>';
+            recommendations.forEach(rec => {
+                html += `
+                    <div class="scheme-recommendation">
+                        <div class="scheme-name">${rec.scheme.name}</div>
+                        <div class="scheme-description">${rec.scheme.description}</div>
+                        <div class="scheme-benefit"><strong>Benefit:</strong> ${rec.scheme.benefit}</div>
+                        <div class="priority-score">Priority: ${rec.priority}%</div>
+                    </div>
+                `;
+            });
+            
+            dssContent.innerHTML = html;
+        }
+
+        // Get scheme recommendations based on claim data
+        function getSchemeRecommendations(claim) {
+            const recommendations = [];
+            
+            allData.governmentSchemes.forEach(scheme => {
+                let priority = 0;
+                
+                // Calculate priority based on claim characteristics
+                if (scheme.name === 'PM-KISAN' && claim.assets.includes('Agricultural Land')) {
+                    priority = 90;
+                } else if (scheme.name === 'Jal Jeevan Mission' && claim.assets.includes('Water Body')) {
+                    priority = 85;
+                } else if (scheme.name === 'MGNREGA') {
+                    priority = 75;
+                } else if (scheme.name === 'DAJGUA' && claim.status === 'Approved') {
+                    priority = 80;
+                }
+                
+                if (priority > 0) {
+                    recommendations.push({ scheme, priority });
+                }
+            });
+            
+            return recommendations.sort((a, b) => b.priority - a.priority);
+        }
+
+        // Generate scheme recommendations (called from modal)
+        function generateSchemeRecommendations(claimId) {
+            const claim = claimId ? allData.fraClaims.find(c => c.id === claimId) : currentSelectedClaim;
+            if (!claim) return;
+            
+            generateDSSRecommendations(claim);
+            closeModal();
+            showMessage('Scheme recommendations generated', 'success');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('claimModal').classList.add('hidden');
+        }
+
+        // File upload handling
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                simulateOCRProcessing(files);
+            }
+        }
+
+        // Handle file drop
+        function handleFileDrop(event) {
+            event.preventDefault();
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                simulateOCRProcessing(files);
+            }
+            event.target.classList.remove('dragover');
+        }
+
+        // Handle drag over
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.target.classList.add('dragover');
+        }
+
+        // Simulate OCR processing
+        function simulateOCRProcessing(files) {
+            const processingResults = document.getElementById('processingResults');
+            const progressFill = document.getElementById('progressFill');
+            const extractedInfo = document.getElementById('extractedInfo');
+            
+            processingResults.classList.remove('hidden');
+            
+            // Simulate progress
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressFill.style.width = progress + '%';
+                
+                if (progress === 100) {
+                    clearInterval(progressInterval);
+                    
+                    // Show extracted information
+                    extractedInfo.innerHTML = `
+                        <div class="extracted-data-item">
+                            <strong>Name:</strong> Rajesh Kumar Meena
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>Village:</strong> Bamhori
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>District:</strong> Mandla
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>Coordinates:</strong> 22.5987°N, 80.3737°E
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>Claim Type:</strong> Individual Forest Rights (IFR)
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>Area:</strong> 3.2 hectares
+                        </div>
+                        <div class="extracted-data-item">
+                            <strong>Confidence:</strong> 94.5%
+                        </div>
+                    `;
+                    
+                    showMessage('Document processing completed successfully', 'success');
+                }
+            }, 200);
+        }
+
+        // Initialize analytics charts
+        function initializeAnalytics() {
+            Chart.defaults.font.family = 'FKGroteskNeue, Geist, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            Chart.defaults.color = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+        }
+
+        // Update charts
+        function updateCharts() {
+            updateStateChart();
+            updateTypeChart();
+            updateStatusChart();
+            updateProgressChart();
+        }
+
+        // Update state chart
+        function updateStateChart() {
+            const ctx = document.getElementById('stateChart').getContext('2d');
+            
+            if (charts.stateChart) {
+                charts.stateChart.destroy();
+            }
+            
+            const stateData = {};
+            filteredClaims.forEach(claim => {
+                stateData[claim.state] = (stateData[claim.state] || 0) + 1;
+            });
+            
+            charts.stateChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(stateData),
+                    datasets: [{
+                        label: 'Claims',
+                        data: Object.values(stateData),
+                        backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update type chart
+        function updateTypeChart() {
+            const ctx = document.getElementById('typeChart').getContext('2d');
+            
+            if (charts.typeChart) {
+                charts.typeChart.destroy();
+            }
+            
+            const typeData = {};
+            filteredClaims.forEach(claim => {
+                typeData[claim.claimType] = (typeData[claim.claimType] || 0) + 1;
+            });
+            
+            charts.typeChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(typeData),
+                    datasets: [{
+                        data: Object.values(typeData),
+                        backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        // Update status chart
+        function updateStatusChart() {
+            const ctx = document.getElementById('statusChart').getContext('2d');
+            
+            if (charts.statusChart) {
+                charts.statusChart.destroy();
+            }
+            
+            const statusData = {};
+            filteredClaims.forEach(claim => {
+                statusData[claim.status] = (statusData[claim.status] || 0) + 1;
+            });
+            
+            charts.statusChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(statusData),
+                    datasets: [{
+                        data: Object.values(statusData),
+                        backgroundColor: ['#5D878F', '#DB4545', '#D2BA4C']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        // Update progress chart
+        function updateProgressChart() {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            
+            if (charts.progressChart) {
+                charts.progressChart.destroy();
+            }
+            
+            const monthlyData = {
+                'Jan': 12,
+                'Feb': 19,
+                'Mar': 15,
+                'Apr': 22,
+                'May': 18,
+                'Jun': 25,
+                'Jul': 30,
+                'Aug': 28,
+                'Sep': 35
+            };
+            
+            charts.progressChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(monthlyData),
+                    datasets: [{
+                        label: 'Claims Processed',
+                        data: Object.values(monthlyData),
+                        borderColor: '#1FB8CD',
+                        backgroundColor: '#1FB8CD',
+                        fill: false,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate report
+        function generateReport() {
+            const reportContent = document.getElementById('reportContent');
+            
+            const totalClaims = filteredClaims.length;
+            const approved = filteredClaims.filter(c => c.status === 'Approved').length;
+            const pending = filteredClaims.filter(c => c.status === 'Pending').length;
+            const rejected = filteredClaims.filter(c => c.status === 'Rejected').length;
+            
+            reportContent.innerHTML = `
+                <h3>FRA Claims Analysis Report</h3>
+                <p><strong>Generated on:</strong> ${new Date().toLocaleDateString()}</p>
+                
+                <h4>Summary Statistics</h4>
+                <ul>
+                    <li>Total Claims: ${totalClaims}</li>
+                    <li>Approved: ${approved} (${((approved/totalClaims)*100).toFixed(1)}%)</li>
+                    <li>Pending: ${pending} (${((pending/totalClaims)*100).toFixed(1)}%)</li>
+                    <li>Rejected: ${rejected} (${((rejected/totalClaims)*100).toFixed(1)}%)</li>
+                </ul>
+                
+                <h4>State-wise Distribution</h4>
+                <ul>
+                    ${allData.states.map(state => {
+                        const stateClaims = filteredClaims.filter(c => c.state === state.name).length;
+                        return `<li>${state.name}: ${stateClaims} claims</li>`;
+                    }).join('')}
+                </ul>
+                
+                <h4>Recommendations</h4>
+                <ul>
+                    <li>Focus on pending claim processing in high-volume districts</li>
+                    <li>Implement digital workflow for faster claim verification</li>
+                    <li>Provide additional support for rejected claims review</li>
+                    <li>Strengthen community engagement in ${allData.states[0].name}</li>
+                </ul>
+            `;
+            
+            showMessage('Report generated successfully', 'success');
+        }
+
+        // Export data
+        function exportData() {
+            const data = {
+                timestamp: new Date().toISOString(),
+                filteredClaims: filteredClaims,
+                summary: {
+                    total: filteredClaims.length,
+                    approved: filteredClaims.filter(c => c.status === 'Approved').length,
+                    pending: filteredClaims.filter(c => c.status === 'Pending').length,
+                    rejected: filteredClaims.filter(c => c.status === 'Rejected').length
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fra-claims-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showMessage('Data exported successfully', 'success');
+        }
+
+        // Show message
+        function showMessage(text, type = 'success') {
+            const messageContainer = document.getElementById('messageContainer');
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            
+            messageContainer.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+
+        // Debounce utility
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (map) {
+                map.invalidateSize();
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('claimModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
