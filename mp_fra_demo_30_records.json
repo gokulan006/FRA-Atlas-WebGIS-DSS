@@ -1,0 +1,1240 @@
+ [
+                {
+        "id": "FRA001MP",
+        "patternHolderName": "Sita Sahariya",
+        "village": "Sausar",
+        "district": "Chhindwara",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "7.1 hectares",
+        "status": "Approved",
+        "lat": 22.0203,
+        "lng": 79.065,
+        "dateOfClaim": "2025-05-11",
+        "assets": [
+        "Water Body",
+        "Community Pond",
+        "Medicinal Plants",
+        "Agricultural Land"
+        ],
+        "familySize": 3,
+        "surveyNumber": "SY/772/70",
+        "gramPanchayat": "GP Sausar",
+        "tehsil": "Chhindwara",
+        "claimArea": {
+        "agricultural": 0.3,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-6521",
+        "subDivision": "SDLC-984",
+        "district": "DLC-17"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA002MP",
+        "patternHolderName": "Mohan Bhil",
+        "village": "Jhiriya",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "4.5 hectares",
+        "status": "Approved",
+        "lat": 22.6303,
+        "lng": 80.4499,
+        "dateOfClaim": "2024-03-21",
+        "assets": [
+        "Medicinal Plants",
+        "Community Pond",
+        "Water Body",
+        "Bamboo Grove"
+        ],
+        "familySize": 5,
+        "surveyNumber": "SY/607/41",
+        "gramPanchayat": "GP Jhiriya",
+        "tehsil": "Tehsil North",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-9897",
+        "subDivision": "SDLC-310",
+        "district": "DLC-65"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "Pending field verification"
+    },
+    {
+        "id": "FRA003MP",
+        "patternHolderName": "Mithun Murmu",
+        "village": "Nowrozabad",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "6.1 hectares",
+        "status": "Approved",
+        "lat": 23.6191,
+        "lng": 80.8162,
+        "dateOfClaim": "2025-01-26",
+        "assets": [
+        "Agricultural Land",
+        "Medicinal Plants",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/117/16",
+        "gramPanchayat": "GP Nowrozabad",
+        "tehsil": "Umaria",
+        "claimArea": {
+        "agricultural": 1.7,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-3390",
+        "subDivision": "SDLC-105",
+        "district": "DLC-90"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Committee approval required"
+    },
+    {
+        "id": "FRA004MP",
+        "patternHolderName": "Rashmi Soren",
+        "village": "Manpur",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "7.0 hectares",
+        "status": "Approved",
+        "lat": 23.5206,
+        "lng": 80.8401,
+        "dateOfClaim": "2024-11-13",
+        "assets": [
+        "Grazing Land",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 3,
+        "surveyNumber": "SY/394/45",
+        "gramPanchayat": "GP Manpur",
+        "tehsil": "Tehsil East",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-8646",
+        "subDivision": "SDLC-626",
+        "district": "DLC-73"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "Pending field verification"
+    },
+    {
+        "id": "FRA005MP",
+        "patternHolderName": "Shanti Ahirwar",
+        "village": "Kutela",
+        "district": "Balaghat",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "1.3 hectares",
+        "status": "Approved",
+        "lat": 21.91,
+        "lng": 80.1174,
+        "dateOfClaim": "2023-12-11",
+        "assets": [
+        "Forest Cover",
+        "Fruit Trees",
+        "Homestead"
+        ],
+        "familySize": 6,
+        "surveyNumber": "SY/501/69",
+        "gramPanchayat": "GP Kutela",
+        "tehsil": "Balaghat",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 1.0,
+        "forest": 8.5
+        },
+        "committees": {
+        "gramSabha": "GS-3822",
+        "subDivision": "SDLC-254",
+        "district": "DLC-14"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA006MP",
+        "patternHolderName": "Namita Hembram",
+        "village": "Bandhogarh",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "4.9 hectares",
+        "status": "Approved",
+        "lat": 23.4675,
+        "lng": 80.6905,
+        "dateOfClaim": "2025-02-26",
+        "assets": [
+        "Medicinal Plants",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/942/84",
+        "gramPanchayat": "GP Bandhogarh",
+        "tehsil": "Umaria",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-2699",
+        "subDivision": "SDLC-998",
+        "district": "DLC-62"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Complete documentation submitted"
+    },
+    {
+        "id": "FRA007MP",
+        "patternHolderName": "Anita Pardhan",
+        "village": "Sausar",
+        "district": "Chhindwara",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "5.5 hectares",
+        "status": "Approved",
+        "lat": 22.1483,
+        "lng": 78.9303,
+        "dateOfClaim": "2023-10-30",
+        "assets": [
+        "Non-Timber Forest Produce",
+        "Community Pond",
+        "Grazing Land",
+        "Forest Cover",
+        "Agricultural Land"
+        ],
+        "familySize": 4,
+        "surveyNumber": "SY/523/58",
+        "gramPanchayat": "GP Sausar",
+        "tehsil": "Tehsil South",
+        "claimArea": {
+        "agricultural": 3.3,
+        "homestead": 0,
+        "forest": 14.9
+        },
+        "committees": {
+        "gramSabha": "GS-7501",
+        "subDivision": "SDLC-790",
+        "district": "DLC-98"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA008MP",
+        "patternHolderName": "Laxmi Bhil",
+        "village": "Ghansaur",
+        "district": "Seoni",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "6.3 hectares",
+        "status": "Approved",
+        "lat": 22.0206,
+        "lng": 79.4,
+        "dateOfClaim": "2024-08-23",
+        "assets": [
+        "Fruit Trees",
+        "Agricultural Land",
+        "Medicinal Plants"
+        ],
+        "familySize": 4,
+        "surveyNumber": "SY/894/69",
+        "gramPanchayat": "GP Ghansaur",
+        "tehsil": "Ghansaur",
+        "claimArea": {
+        "agricultural": 4.1,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-1116",
+        "subDivision": "SDLC-771",
+        "district": "DLC-38"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Committee approval required"
+    },
+    {
+        "id": "FRA009MP",
+        "patternHolderName": "Mithun Murmu",
+        "village": "Pali",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "5.5 hectares",
+        "status": "Approved",
+        "lat": 23.6577,
+        "lng": 80.7455,
+        "dateOfClaim": "2023-07-21",
+        "assets": [
+        "Water Body"
+        ],
+        "familySize": 4,
+        "surveyNumber": "SY/953/96",
+        "gramPanchayat": "GP Pali",
+        "tehsil": "Tehsil West",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-4548",
+        "subDivision": "SDLC-184",
+        "district": "DLC-13"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA010MP",
+        "patternHolderName": "Santosh Baiga",
+        "village": "Bamhani",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "4.4 hectares",
+        "status": "Approved",
+        "lat": 22.4546,
+        "lng": 80.4668,
+        "dateOfClaim": "2025-06-26",
+        "assets": [
+        "Non-Timber Forest Produce",
+        "Agricultural Land",
+        "Bamboo Grove"
+        ],
+        "familySize": 6,
+        "surveyNumber": "SY/293/86",
+        "gramPanchayat": "GP Bamhani",
+        "tehsil": "Bamhani",
+        "claimArea": {
+        "agricultural": 1.2,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-9851",
+        "subDivision": "SDLC-717",
+        "district": "DLC-13"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Complete documentation submitted"
+    },
+    {
+        "id": "FRA011MP",
+        "patternHolderName": "Santosh Baiga",
+        "village": "Amla",
+        "district": "Betul",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "7.3 hectares",
+        "status": "Approved",
+        "lat": 21.9709,
+        "lng": 77.8316,
+        "dateOfClaim": "2023-05-07",
+        "assets": [
+        "Fruit Trees",
+        "Water Body",
+        "Homestead"
+        ],
+        "familySize": 8,
+        "surveyNumber": "SY/533/20",
+        "gramPanchayat": "GP Amla",
+        "tehsil": "Tehsil East",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 1.1,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-3570",
+        "subDivision": "SDLC-940",
+        "district": "DLC-79"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Committee approval required"
+    },
+    {
+        "id": "FRA012MP",
+        "patternHolderName": "Urmila Bharia",
+        "village": "Maihar",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "6.7 hectares",
+        "status": "Approved",
+        "lat": 23.529,
+        "lng": 80.9731,
+        "dateOfClaim": "2024-06-06",
+        "assets": [
+        "Medicinal Plants",
+        "Water Body",
+        "Fruit Trees",
+        "Bamboo Grove"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/763/53",
+        "gramPanchayat": "GP Maihar",
+        "tehsil": "Umaria",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-9974",
+        "subDivision": "SDLC-188",
+        "district": "DLC-34"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "Asset mapping verified"
+    },
+    {
+        "id": "FRA013MP",
+        "patternHolderName": "Jagdish Nagesia",
+        "village": "Sausar",
+        "district": "Chhindwara",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "3.7 hectares",
+        "status": "Approved",
+        "lat": 22.1042,
+        "lng": 79.0785,
+        "dateOfClaim": "2024-05-19",
+        "assets": [
+        "Sacred Grove",
+        "Non-Timber Forest Produce",
+        "Agricultural Land"
+        ],
+        "familySize": 3,
+        "surveyNumber": "SY/640/52",
+        "gramPanchayat": "GP Sausar",
+        "tehsil": "Chhindwara",
+        "claimArea": {
+        "agricultural": 4.2,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-6673",
+        "subDivision": "SDLC-738",
+        "district": "DLC-88"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": "Committee approval required"
+    },
+    {
+        "id": "FRA014MP",
+        "patternHolderName": "Raju Sahariya",
+        "village": "Khatola",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "1.7 hectares",
+        "status": "Approved",
+        "lat": 22.5839,
+        "lng": 80.4834,
+        "dateOfClaim": "2024-02-14",
+        "assets": [
+        "Non-Timber Forest Produce",
+        "Sacred Grove",
+        "Agricultural Land",
+        "Water Body"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/565/41",
+        "gramPanchayat": "GP Khatola",
+        "tehsil": "Khatola",
+        "claimArea": {
+        "agricultural": 1.4,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-7964",
+        "subDivision": "SDLC-683",
+        "district": "DLC-40"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": false
+        },
+        "remarks": "Asset mapping verified"
+    },
+    {
+        "id": "FRA015MP",
+        "patternHolderName": "Sunita Gond",
+        "village": "Khatola",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "claimType": "IFR",
+        "area": "1.2 hectares",
+        "status": "Approved",
+        "lat": 22.7114,
+        "lng": 80.2957,
+        "dateOfClaim": "2025-07-16",
+        "assets": [
+        "Homestead",
+        "Sacred Grove"
+        ],
+        "familySize": 4,
+        "surveyNumber": "SY/468/24",
+        "gramPanchayat": "GP Khatola",
+        "tehsil": "Khatola",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0.3,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-7664",
+        "subDivision": "SDLC-801",
+        "district": "DLC-63"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": false,
+        "communitySupport": false
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA016MP",
+        "patternHolderName": "Raju Sahariya",
+        "village": "Amarkantak",
+        "district": "Dindori",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "6.6 hectares",
+        "status": "Approved",
+        "lat": 22.9156,
+        "lng": 81.2118,
+        "dateOfClaim": "2024-02-13",
+        "assets": [
+        "Traditional Wells",
+        "Grazing Land",
+        "Homestead",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/971/16",
+        "gramPanchayat": "GP Amarkantak",
+        "tehsil": "Amarkantak",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0.3,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-5361",
+        "subDivision": "SDLC-458",
+        "district": "DLC-54"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Asset mapping verified"
+    },
+    {
+        "id": "FRA017MP",
+        "patternHolderName": "Ganesh Munda",
+        "village": "Pali",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "24.0 hectares",
+        "status": "Approved",
+        "lat": 23.5589,
+        "lng": 80.8709,
+        "dateOfClaim": "2024-04-01",
+        "assets": [
+        "Sacred Grove",
+        "Agricultural Land",
+        "Water Body",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 6,
+        "surveyNumber": "SY/586/47",
+        "gramPanchayat": "GP Pali",
+        "tehsil": "Umaria",
+        "claimArea": {
+        "agricultural": 2.2,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-7592",
+        "subDivision": "SDLC-985",
+        "district": "DLC-88"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Asset mapping verified"
+    },
+    {
+        "id": "FRA018MP",
+        "patternHolderName": "Geeta Gond",
+        "village": "Lakhnadon",
+        "district": "Seoni",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "10.2 hectares",
+        "status": "Approved",
+        "lat": 22.1966,
+        "lng": 79.6052,
+        "dateOfClaim": "2023-12-08",
+        "assets": [
+        "Traditional Wells",
+        "Agricultural Land"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/821/96",
+        "gramPanchayat": "GP Lakhnadon",
+        "tehsil": "Lakhnadon",
+        "claimArea": {
+        "agricultural": 3.3,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-3114",
+        "subDivision": "SDLC-469",
+        "district": "DLC-67"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA019MP",
+        "patternHolderName": "Raju Sahariya",
+        "village": "Bandhogarh",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "24.0 hectares",
+        "status": "Pending",
+        "lat": 23.651,
+        "lng": 80.8516,
+        "dateOfClaim": "2025-02-22",
+        "assets": [
+        "Grazing Land",
+        "Traditional Wells",
+        "Agricultural Land",
+        "Water Body"
+        ],
+        "familySize": 6,
+        "surveyNumber": "SY/856/3",
+        "gramPanchayat": "GP Bandhogarh",
+        "tehsil": "Tehsil West",
+        "claimArea": {
+        "agricultural": 0.4,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-7917",
+        "subDivision": "SDLC-825",
+        "district": "DLC-90"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA020MP",
+        "patternHolderName": "Bhuriya Bhil",
+        "village": "Karanjia",
+        "district": "Dindori",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "20.0 hectares",
+        "status": "Pending",
+        "lat": 22.9882,
+        "lng": 81.0024,
+        "dateOfClaim": "2024-08-21",
+        "assets": [
+        "Medicinal Plants",
+        "Forest Cover",
+        "Agricultural Land"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/273/32",
+        "gramPanchayat": "GP Karanjia",
+        "tehsil": "Dindori",
+        "claimArea": {
+        "agricultural": 0.7,
+        "homestead": 0,
+        "forest": 0.1
+        },
+        "committees": {
+        "gramSabha": "GS-3480",
+        "subDivision": "SDLC-522",
+        "district": "DLC-87"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA021MP",
+        "patternHolderName": "Dilip Pardhan",
+        "village": "Pali",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "12.4 hectares",
+        "status": "Pending",
+        "lat": 23.5039,
+        "lng": 80.9823,
+        "dateOfClaim": "2025-04-18",
+        "assets": [
+        "Grazing Land",
+        "Non-Timber Forest Produce"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/883/19",
+        "gramPanchayat": "GP Pali",
+        "tehsil": "Tehsil South",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-5898",
+        "subDivision": "SDLC-207",
+        "district": "DLC-98"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Pending field verification"
+    },
+    {
+        "id": "FRA022MP",
+        "patternHolderName": "Santosh Baiga",
+        "village": "Pandhurna",
+        "district": "Balaghat",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "11.0 hectares",
+        "status": "Pending",
+        "lat": 21.9157,
+        "lng": 80.1953,
+        "dateOfClaim": "2024-06-02",
+        "assets": [
+        "Community Pond",
+        "Agricultural Land",
+        "Medicinal Plants",
+        "Forest Cover"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/303/55",
+        "gramPanchayat": "GP Pandhurna",
+        "tehsil": "Pandhurna",
+        "claimArea": {
+        "agricultural": 4.1,
+        "homestead": 0,
+        "forest": 14.3
+        },
+        "committees": {
+        "gramSabha": "GS-6848",
+        "subDivision": "SDLC-674",
+        "district": "DLC-44"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Complete documentation submitted"
+    },
+    {
+        "id": "FRA023MP",
+        "patternHolderName": "Bhuriya Bhil",
+        "village": "Jaisinghnagar",
+        "district": "Shahdol",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "7.3 hectares",
+        "status": "Pending",
+        "lat": 23.4287,
+        "lng": 81.2299,
+        "dateOfClaim": "2023-12-29",
+        "assets": [
+        "Water Body",
+        "Homestead",
+        "Grazing Land",
+        "Forest Cover"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/273/82",
+        "gramPanchayat": "GP Jaisinghnagar",
+        "tehsil": "Tehsil West",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0.3,
+        "forest": 13.3
+        },
+        "committees": {
+        "gramSabha": "GS-7779",
+        "subDivision": "SDLC-131",
+        "district": "DLC-21"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA024MP",
+        "patternHolderName": "Mohan Bhil",
+        "village": "Jhiriya",
+        "district": "Mandla",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "8.9 hectares",
+        "status": "Pending",
+        "lat": 22.7152,
+        "lng": 80.4933,
+        "dateOfClaim": "2025-04-13",
+        "assets": [
+        "Grazing Land",
+        "Sacred Grove",
+        "Agricultural Land",
+        "Medicinal Plants"
+        ],
+        "familySize": 3,
+        "surveyNumber": "SY/826/20",
+        "gramPanchayat": "GP Jhiriya",
+        "tehsil": "Tehsil North",
+        "claimArea": {
+        "agricultural": 1.4,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-5435",
+        "subDivision": "SDLC-627",
+        "district": "DLC-48"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA025MP",
+        "patternHolderName": "Ramesh Kumar Baiga",
+        "village": "Kurai",
+        "district": "Seoni",
+        "state": "Madhya Pradesh",
+        "claimType": "CR",
+        "area": "20.3 hectares",
+        "status": "Pending",
+        "lat": 22.0962,
+        "lng": 79.4944,
+        "dateOfClaim": "2023-11-01",
+        "assets": [
+        "Forest Cover",
+        "Sacred Grove",
+        "Water Body",
+        "Agricultural Land"
+        ],
+        "familySize": 9,
+        "surveyNumber": "SY/535/81",
+        "gramPanchayat": "GP Kurai",
+        "tehsil": "Kurai",
+        "claimArea": {
+        "agricultural": 2.6,
+        "homestead": 0,
+        "forest": 12.1
+        },
+        "committees": {
+        "gramSabha": "GS-3351",
+        "subDivision": "SDLC-437",
+        "district": "DLC-17"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA026MP",
+        "patternHolderName": "Kamala Korku",
+        "village": "Barghat",
+        "district": "Seoni",
+        "state": "Madhya Pradesh",
+        "claimType": "CFR",
+        "area": "29.0 hectares",
+        "status": "Pending",
+        "lat": 22.0597,
+        "lng": 79.5819,
+        "dateOfClaim": "2023-08-19",
+        "assets": [
+        "Community Pond",
+        "Fruit Trees",
+        "Medicinal Plants",
+        "Forest Cover"
+        ],
+        "familySize": 5,
+        "surveyNumber": "SY/789/33",
+        "gramPanchayat": "GP Barghat",
+        "tehsil": "Tehsil West",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 1.1
+        },
+        "committees": {
+        "gramSabha": "GS-9541",
+        "subDivision": "SDLC-346",
+        "district": "DLC-53"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA027MP",
+        "patternHolderName": "Vinod Korku",
+        "village": "Beohari",
+        "district": "Shahdol",
+        "state": "Madhya Pradesh",
+        "claimType": "CFR",
+        "area": "23.7 hectares",
+        "status": "Rejected",
+        "lat": 23.3658,
+        "lng": 81.2355,
+        "dateOfClaim": "2024-08-13",
+        "assets": [
+        "Bamboo Grove",
+        "Agricultural Land",
+        "Community Pond",
+        "Sacred Grove"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/629/77",
+        "gramPanchayat": "GP Beohari",
+        "tehsil": "Tehsil West",
+        "claimArea": {
+        "agricultural": 1.2,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-6942",
+        "subDivision": "SDLC-172",
+        "district": "DLC-89"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": true,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "GPS survey completed"
+    },
+    {
+        "id": "FRA028MP",
+        "patternHolderName": "Laxmi Bhil",
+        "village": "Manpur",
+        "district": "Umaria",
+        "state": "Madhya Pradesh",
+        "claimType": "CFR",
+        "area": "34.7 hectares",
+        "status": "Rejected",
+        "lat": 23.6676,
+        "lng": 80.9827,
+        "dateOfClaim": "2025-07-12",
+        "assets": [
+        "Fruit Trees",
+        "Community Pond",
+        "Forest Cover",
+        "Sacred Grove"
+        ],
+        "familySize": 4,
+        "surveyNumber": "SY/565/28",
+        "gramPanchayat": "GP Manpur",
+        "tehsil": "Manpur",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 14.5
+        },
+        "committees": {
+        "gramSabha": "GS-6056",
+        "subDivision": "SDLC-854",
+        "district": "DLC-19"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": ""
+    },
+    {
+        "id": "FRA029MP",
+        "patternHolderName": "Sunita Gond",
+        "village": "Harrai",
+        "district": "Chhindwara",
+        "state": "Madhya Pradesh",
+        "claimType": "CFR",
+        "area": "47.2 hectares",
+        "status": "Rejected",
+        "lat": 22.0446,
+        "lng": 78.8522,
+        "dateOfClaim": "2025-03-28",
+        "assets": [
+        "Fruit Trees",
+        "Medicinal Plants"
+        ],
+        "familySize": 7,
+        "surveyNumber": "SY/885/58",
+        "gramPanchayat": "GP Harrai",
+        "tehsil": "Harrai",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-8090",
+        "subDivision": "SDLC-143",
+        "district": "DLC-86"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Committee approval required"
+    },
+    {
+        "id": "FRA030MP",
+        "patternHolderName": "Urmila Bharia",
+        "village": "Ghansaur",
+        "district": "Seoni",
+        "state": "Madhya Pradesh",
+        "claimType": "CFR",
+        "area": "26.1 hectares",
+        "status": "Rejected",
+        "lat": 22.1522,
+        "lng": 79.4025,
+        "dateOfClaim": "2025-03-07",
+        "assets": [
+        "Water Body",
+        "Bamboo Grove",
+        "Homestead"
+        ],
+        "familySize": 8,
+        "surveyNumber": "SY/914/7",
+        "gramPanchayat": "GP Ghansaur",
+        "tehsil": "Tehsil North",
+        "claimArea": {
+        "agricultural": 0,
+        "homestead": 0.4,
+        "forest": 0
+        },
+        "committees": {
+        "gramSabha": "GS-6796",
+        "subDivision": "SDLC-338",
+        "district": "DLC-22"
+        },
+        "eligibleSchemes": [],
+        "documents": {
+        "applicationForm": true,
+        "identityProof": true,
+        "residenceProof": false,
+        "landDocuments": true,
+        "communitySupport": true
+        },
+        "remarks": "Pending field verification"
+    }
+]
